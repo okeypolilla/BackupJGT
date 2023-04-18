@@ -33,6 +33,11 @@
         src: ./init.vim
         dest: ~/.config/nvim/
     
+    - name: Create Vim-Plug directory
+      ansible.builtin.file:
+        path: /root/.local/share/nvim/site/autoload
+        state: directory
+
     - name: Descargar Vim-Plug
       become: yes
       get_url:
