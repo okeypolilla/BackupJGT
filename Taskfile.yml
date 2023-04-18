@@ -3,7 +3,5 @@ version: '3'
 tasks:
   build:
     cmds:
-     - sudo apt update
-     - sudo apt install ansible -y
-
-  
+      - sudo apt-get update -y
+      - sudo apt-get install ansible
