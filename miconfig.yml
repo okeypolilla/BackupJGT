@@ -30,8 +30,8 @@
 
     - name: Copiar My_init.vim
       ansible.builtin.copy:
-      src: ./init.vim
-      dest: ~/.config/nvim/
+        src: ./init.vim
+        dest: ~/.config/nvim/
     
     - name: Descargar Vim-Plug
       become: yes
