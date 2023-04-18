@@ -18,6 +18,11 @@
         name: curl
         state: present
 
+    - name: Install nodejs
+      apt:
+        name: nodejs
+        state: present
+
     - name: Create Neovim directory
       file:
         path: "~/.config/nvim/"
