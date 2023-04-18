@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  become: true
+
+  tasks:
+    - name: Install Neovim
+      apt:
+        name: neovim
+        state: present
+
+    - name: Install Git
+      apt:
+        name: git
+        state: present
+
+    - name: Install Curl
+      apt:
+        name: Curl
+        state: present
+
+    - name: Create Neovim directory
+      file:
+        path: "~/.config/nvim/"
+        state: directory
+    
+    - name: Clone Neovim configuration repository
+      git:
+        repo: https://github.com/user/neovim-config.git
+        dest: "~/.config/nvim/"
