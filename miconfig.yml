@@ -27,9 +27,8 @@
       ansible.builtin.file:
         path: ~/.config/nvim/
         state: directory
-        mode: '0755'
 
-    - name: Copiar My init.vim
+    - name: Copiar My_init.vim
       ansible.builtin.copy:
       src: ./init.vim
       dest: ~/.config/nvim/
