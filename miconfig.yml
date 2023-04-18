@@ -4,22 +4,22 @@
 
   tasks:
     - name: Install Neovim
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: neovim
         state: present
 
     - name: Install Git
-      ansible.builtin.apt:
+      ansible.builtin.package:
         name: git
         state: present
 
-    - name: Install Curl
-      ansible.builtin.apt:
-        name: curl
-        state: present
+    - name: Install curl package
+      ansible.builtin.package:
+       name: curl
+       state: present
 
-    - name: Install nodejs
-      ansible.builtin.apt:
+    - name: Install Node.js 
+      ansible.builtin.package:
         name: nodejs
         state: present
 

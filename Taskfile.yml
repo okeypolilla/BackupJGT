@@ -1,0 +1,9 @@
+version: '3'
+
+tasks:
+  build:
+    cmds:
+     - sudo apt update
+     - sudo apt install ansible -y
+
+  
