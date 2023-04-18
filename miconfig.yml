@@ -4,34 +4,35 @@
 
   tasks:
     - name: Install Neovim
-      apt:
+      ansible.builtin.apt:
         name: neovim
         state: present
 
     - name: Install Git
-      apt:
+      ansible.builtin.apt:
         name: git
         state: present
 
     - name: Install Curl
-      apt:
+      ansible.builtin.apt:
         name: curl
         state: present
 
     - name: Install nodejs
-      apt:
+      ansible.builtin.apt:
         name: nodejs
         state: present
 
     - name: Create Neovim directory
-      file:
-        path: "~/.config/nvim/"
+      ansible.builtin.file:
+        path: ~/.config/nvim/
         state: directory
+        mode: '0755'
 
     - name: Copiar My init.vim
-      copy:
-        src: ./init.vim
-        dest: ~/.config/nvim/
+      ansible.builtin.copy:
+      content: ./init.vim
+      dest: ~/.config/nvim/
     
     - name: Descargar Vim-Plug
       become: yes
