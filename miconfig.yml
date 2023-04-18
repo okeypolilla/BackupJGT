@@ -27,6 +27,11 @@
       file:
         path: "~/.config/nvim/"
         state: directory
+
+    - name: Copiar My init.vim
+      copy:
+        src: ./init.vim
+        dest: ~/.config/nvim/
     
     - name: Descargar Vim-Plug
       become: yes
