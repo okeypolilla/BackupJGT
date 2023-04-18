@@ -13,6 +13,7 @@ Plug 'christoomey/vim-tmux-navigator'	"poder navegar entre archivos abiertos
 Plug 'jiangmiao/auto-pairs'		"autocompletado de llaves, corchetes, etc.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	"autocompletado inteligente
 
+
 call plug#end() 			"cerramos el llamado de los plugins
 
 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
