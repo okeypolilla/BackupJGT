@@ -3,5 +3,9 @@ version: '3'
 tasks:
   build:
     cmds:
-      - sudo apt-get update -y
-      - sudo apt-get install ansible
+      - apt-get update -y
+      - apt-get install ansible 
+  
+  APB:
+    cmds:
+      - ansible-playbook miconfig.yml
