@@ -15,7 +15,7 @@
 
     - name: Install Curl
       apt:
-        name: Curl
+        name: curl
         state: present
 
     - name: Create Neovim directory
