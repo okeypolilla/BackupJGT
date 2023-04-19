@@ -1,12 +1,25 @@
-version: '3'
+version: "3"
 
-tasks: 
+tasks:
+  check:
+    desc: check ansible
+    run: once
+    deps:                            ##deps: Indica que hay una dependencia en la tarea. En este caso, la tarea depende de otra tarea llamada "check:ansible", lo que significa que esa tarea debe completarse antes de que se pueda ejecutar la tarea "check".
+      - task: check:ansible
+
+  check:ansible:
+    desc: exist ansible?
+    run: once
+    preconditions:                  ## contiene una lista de comprobaciones previas que se deben realizar antes de ejecutar la tarea. En este caso, la tarea verificará si el comando docker se puede ejecutar en el sistema utilizando command -v docker.
+      - command: ansible --version
+        msg: 'please run "task playbook"'
+
   playbook:
     desc: Install ansible-playbook
     cmds:
       - apt-get update -y
-      - apt-get install ansible 
-  
+      - apt-get install ansible
+
   install:
     desc: install my personal settings
     cmds:
