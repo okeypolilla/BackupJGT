@@ -1,11 +1,13 @@
 version: '3'
 
-tasks:
-  build:
+tasks: 
+  playbook:
+    desc: Install ansible-playbook
     cmds:
       - apt-get update -y
       - apt-get install ansible 
   
-  APB:
+  install:
+    desc: install my personal settings
     cmds:
       - ansible-playbook miconfig.yml
