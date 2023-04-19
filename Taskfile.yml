@@ -4,7 +4,7 @@ tasks:
   check:
     desc: check ansible
     run: once
-    deps:                            ##deps: Indica que hay una dependencia en la tarea. En este caso, la tarea depende de otra tarea llamada "check:ansible", lo que significa que esa tarea debe completarse antes de que se pueda ejecutar la tarea "check".
+    deps:                            ##deps:Indica que hay una dependencia en la tarea. En este caso, la tarea depende de otra tarea llamada "check:ansible", lo que significa que esa tarea debe completarse antes de que se pueda ejecutar la tarea "check".
       - task: check:ansible
 
   check:ansible:
