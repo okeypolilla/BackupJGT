@@ -3,17 +3,32 @@ version: "3"
 tasks:
   check:
     desc: check ansible
-    run: once
-    deps:                            ##deps:Indica que hay una dependencia en la tarea. En este caso, la tarea depende de otra tarea llamada "check:ansible", lo que significa que esa tarea debe completarse antes de que se pueda ejecutar la tarea "check".
+    run: once                        ##La línea run: once especifica que la tarea solo se debe ejecutar una vez, lo que es útil para tareas de comprobación.
+    deps:                            ## deps:Indica que hay una dependencia en la tarea. En este caso, la tarea depende de otra tarea llamada "check:ansible", lo que significa que esa tarea debe completarse antes de que se pueda ejecutar la tarea "check".
       - task: check:ansible
+      - task: check:apt
 
   check:ansible:
     desc: exist ansible?
     run: once
-    preconditions:                  ## contiene una lista de comprobaciones previas que se deben realizar antes de ejecutar la tarea. En este caso, la tarea verificará si el comando docker se puede ejecutar en el sistema utilizando command -v docker.
-      - command: ansible --version
+    preconditions:                  ## contiene una lista de comprobaciones previas que se deben realizar antes de ejecutar la tarea. En este caso, la tarea verificará si el comando ansible se puede ejecutar en el sistema utilizando command -v ansible.
+      - sh: command ansible --version
         msg: 'please run "task playbook"'
 
+  check:apt:
+    desc: exist apt?
+    run: once
+    preconditions:                  
+      - sh: command -v apt
+        msg: 'please run "task insall-apt"'
+
+  insall-apt:
+    desc: install apt package
+    run: once
+    preconditions:                  
+      - sh: command apt-get install apt
+
+ 
   playbook:
     desc: Install ansible-playbook
     cmds:
