@@ -1,1 +1,1 @@
-# BackupJGT
+# my personal configuration for nvim
