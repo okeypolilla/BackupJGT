@@ -12,7 +12,7 @@ Plug 'preservim/nerdtree'		"gestor de archivos en forma de arbol.
 Plug 'christoomey/vim-tmux-navigator'	"poder navegar entre archivos abiertos
 Plug 'jiangmiao/auto-pairs'		"autocompletado de llaves, corchetes, etc.
 Plug 'neoclide/coc.nvim', {'branch': 'release'}	"autocompletado inteligente
-
+" Para init.vim
 
 call plug#end() 			"cerramos el llamado de los plugins
 
@@ -27,6 +27,8 @@ syntax enable 				"activa el coloreado de sintaxis en algunos tipos de archivos 
 set encoding=utf-8 			"permite setear la codificación de archivos para aceptar caracteres especiales
 set sw=4 				"la indentación genera 4 espacios
 set nowrap				"el texto en una linea no baja a la siguiente, solo continua en la misma hasta el infinito.
+set cursorcolumn                        "proyecta una línea vertical sobre la columna actual"   
+set cursorline                          "proyecta una línea horizontal sobre la línea actual."      
 "set noswapfile				"para evitar el mensaje que sale al abrir algunos archivos sobre swap.
 set clipboard=unnamed			"para poder utilizar el portapapeles del sistema operativo 'esto permite poder copiar y pegar desde cualquier parte a nvim y viceversa.	
 
@@ -36,6 +38,10 @@ set termguicolors 			"activa el true color en la terminal
 colorscheme onedark 			"activar el tema onedark
 
 "::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+"yamllint auto format"
+let g:yamll_format_on_save = 1
+
 
 "configuracion de emmet-vim
 let g:user_emmet_leader_key=',' 	"mapeando la tecla lider por una coma, con esto se completa los tag con doble coma.
