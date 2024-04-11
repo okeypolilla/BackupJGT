@@ -15,35 +15,32 @@
 
     - name: Install curl package
       ansible.builtin.package:
-       name: curl
-       state: present
+        name: curl
+        state: present
 
-    - name: Install Node.js 
+    - name: Install Node.js
       ansible.builtin.package:
         name: nodejs
         state: present
 
-    - name: Create Neovim directory
-      ansible.builtin.file:
-        path: ~/.config/nvim/
-        state: directory
+    - name: Instalar dependencias necesarias
+      ansible.builtin.package:
+        name:
+          [
+            "apt-transport-https",
+            "ca-certificates",
+            "curl",
+            "gnupg",
+            "software-properties-common",
+          ]
+        state: present
 
-    - name: Copiar My_init.vim
-      ansible.builtin.copy:
-        src: ./init.vim
-        dest: ~/.config/nvim/
-    
-    - name: Create Vim-Plug directory
-      ansible.builtin.file:
-        path: /root/.local/share/nvim/site/autoload
-        state: directory
+    - name: Agregar clave de WineHQ
+      ansible.builtin.apt_key:
+        url: https://dl.winehq.org/wine-builds/winehq.key
+        state: present
 
-    - name: Descargar Vim-Plug
-      become: yes
-      get_url:
-        url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        dest: "{{ lookup('env', 'XDG_DATA_HOME') or '~/.local/share' }}/nvim/site/autoload/plug.vim"
-        mode: '0644'
-
-
-
+    - name: Instalar Wine
+      ansible.builtin.package:
+        name: ["winehq-devel"]
+        state: present
