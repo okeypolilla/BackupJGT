@@ -3,6 +3,9 @@
   become: true
 
   tasks:
+    - name: add i386
+      command: dpkg --add-architecture i386
+
     - name: Install Neovim
       ansible.builtin.package:
         name: neovim
@@ -23,6 +26,26 @@
         name: nodejs
         state: present
 
+    - name: install apt-transport-https
+      ansible.builtin.apt:
+        state: latest
+
+    - name: add apt signing key(chrome)
+      ansible.builtin.apt_key:
+        url: "https://dl.google.com/linux/linux_signing_key.pub"
+        state: present
+
+    - name: Add repository into sources list(chrome)
+      ansible.builtin.apt_repository:
+        repo: deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
+        state: present
+        filename: google-chrome
+
+    - name: Install google-chrome-stable
+      ansible.builtin.apt:
+        name: "google-chrome-stable"
+        state: latest
+
     - name: Instalar dependencias necesarias
       ansible.builtin.package:
         name:
@@ -34,6 +57,26 @@
             "software-properties-common",
           ]
         state: present
+
+    - name: Install snap
+      ansible.builtin.apt:
+        name: "snapd"
+        state: latest
+
+    - name: Install Discord
+      community.general.snap:
+        name: "discord"
+        classic: yes
+
+    - name: install dbeaver
+      community.general.snap:
+        name: "dbeaver-ce"
+        classic: "yes"
+
+    - name: install vscode
+      community.general.snap:
+        name: "code"
+        classic: yes
 
     - name: Agregar clave de WineHQ
       ansible.builtin.apt_key:
